@@ -7,8 +7,8 @@ resource "aws_db_instance" "postgres_db" {
   username               = "username"
   password               = "password"
   db_subnet_group_name   = aws_db_subnet_group.public_subnet_group.name
-  paramater_group_name   = aws_db_parameter_group.parameter_group.name
-  vpc_security_group_ids = []
+  parameter_group_name   = aws_db_parameter_group.parameter_group.name
+  vpc_security_group_ids = [aws_security_group.pg_security.id]
   publicly_accessible    = true
   skip_final_snapshot    = true
 }
