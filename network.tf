@@ -63,7 +63,7 @@ resource "aws_db_parameter_group" "parameter_group" {
   family = "postgres16"
 
   parameter {
-    name  = "log_connection"
+    name  = "log_connections"
     value = 1
   }
 }
