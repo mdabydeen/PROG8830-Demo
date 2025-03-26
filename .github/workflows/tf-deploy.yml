@@ -10,7 +10,7 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
-  AWS_REGION: ${{ secrets.region }}
+  AWS_REGION: ${{ secrets.REGION }}
   
 jobs: 
   provision-infrastructure-using-terraform: 
@@ -24,7 +24,7 @@ jobs:
       - name: Setting Up The Terraform Versions
         uses: hashicorp/setup-terraform@v1
         with: 
-          terraform_version: 1.11.1
+          terraform_version: 1.11.3
 
       - name: Initialize Terraform 
         run: terraform init 
