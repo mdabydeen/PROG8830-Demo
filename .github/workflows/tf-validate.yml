@@ -1,4 +1,4 @@
-name: Terraform CI - CD Pipline Automation 
+name: Terraform CI - CD PR Check 
 
 # action - when 
 on: 
