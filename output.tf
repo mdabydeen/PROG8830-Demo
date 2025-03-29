@@ -5,7 +5,3 @@ output "rds_public_hostname" {
 output "rds_port" {
   value = aws_db_instance.postgres_db.port
 }
-
-output "password" {
-  value = aws_db_instance.postgres_db.password
-}
