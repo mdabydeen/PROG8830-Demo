@@ -1,5 +1,11 @@
+resource "random_integer" "s3_bucket_suffix" {
+  min = 1000
+  max = 99999
+}
+
+
 resource "aws_s3_bucket" "web_bucket" {
-  bucket        = "prog8830-week-10"
+  bucket        = "conestoga-prog8830-${random_integer.s3_bucket_suffix.result}"
   force_destroy = true
 
   // tags 
