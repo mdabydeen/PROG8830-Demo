@@ -2,8 +2,8 @@ resource "aws_db_instance" "postgres_db" {
   identifier             = "localpostgresdb"
   engine                 = "postgres"
   engine_version         = "16.3"
-  instance_class         = "t2.micro"
-  allocated_storage      = 5
+  instance_class         = "t3.medium" # smallest possible instance available
+  allocated_storage      = 20
   username               = "username"
   password               = "password"
   db_subnet_group_name   = aws_db_subnet_group.public_subnet_group.name
