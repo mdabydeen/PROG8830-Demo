@@ -1,8 +1,8 @@
 resource "aws_db_instance" "postgres_db" {
   identifier             = "localpostgresdb"
   engine                 = "postgres"
-  engine_version         = "16.3"
-  instance_class         = "t3.medium" # smallest possible instance available
+  engine_version         = "16.6"
+  instance_class         = "r6g.2xlarge" 
   allocated_storage      = 20
   username               = "username"
   password               = "password"
