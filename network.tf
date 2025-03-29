@@ -1,18 +1,19 @@
 # NETWORKING
-resource "aws_vpc" "webapp" {
-  cidr_block           = "10.0.0.0/16"
-  enable_dns_hostnames = true
+module "vpc" {
+  source   = "./modules/vpc"
+  vpc_cidr = cidrsubnet("10.1.2.0/24", 4, 15)
 }
 
+
 resource "aws_internet_gateway" "internet_gateway" {
-  vpc_id = aws_vpc.webapp.id
+  vpc_id = module.vpc.vpc_id
   tags = {
     "Name" = "PROG8830-Week10"
   }
 }
 
 resource "aws_subnet" "public_subnet_1" {
-  vpc_id                  = aws_vpc.webapp.id
+  vpc_id                  = module.vpc.vpc_id
   cidr_block              = "10.0.2.0/24"
   map_public_ip_on_launch = true
   tags = {
@@ -22,7 +23,7 @@ resource "aws_subnet" "public_subnet_1" {
 
 
 resource "aws_subnet" "public_subnet_2" {
-  vpc_id                  = aws_vpc.webapp.id
+  vpc_id                  = module.vpc.vpc_id
   cidr_block              = "10.0.3.0/24"
   map_public_ip_on_launch = true
   tags = {
@@ -31,7 +32,7 @@ resource "aws_subnet" "public_subnet_2" {
 }
 
 resource "aws_route_table" "public_route_table" {
-  vpc_id = aws_vpc.webapp.id
+  vpc_id = module.vpc.vpc_id
 
   route {
     cidr_block = "0.0.0.0/0"

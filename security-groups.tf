@@ -2,7 +2,7 @@
 resource "aws_security_group" "public_security_group" {
   name        = "public security group"
   description = "PROG8830 security group"
-  vpc_id      = aws_vpc.webapp.id
+  vpc_id      = module.vpc.vpc_id
 
   ingress {
     from_port   = 80
@@ -26,7 +26,7 @@ resource "aws_security_group" "public_security_group" {
 resource "aws_security_group" "load_balancer_sec_group" {
   name        = "load_balancer_sec_group"
   description = "security group for load balancer"
-  vpc_id      = aws_vpc.webapp.id
+  vpc_id      = module.vpc.vpc_id
 
   ingress {
     from_port   = 0
@@ -45,7 +45,7 @@ resource "aws_security_group" "load_balancer_sec_group" {
 
 resource "aws_security_group" "pg_security" {
   name   = "rds_sg"
-  vpc_id = aws_vpc.webapp.id
+  vpc_id = module.vpc.vpc_id
 
   ingress {
     from_port   = 5432
