@@ -14,7 +14,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "prog8830-tfstate"
+    bucket = "prog8830-tfstate-week13"
     key    = "terraform.tfstate"
     region = "us-east-1"
   }
